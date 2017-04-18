@@ -2,7 +2,7 @@
     "name": "lr94/lc",
     "type": "phpbb-extension",
     "description": "Connection logger",
-    "homepage": "https://",
+    "homepage": "https://github.com/lr94/PhpBB-3.2-Connection-Logger",
     "version": "1.0.0-RC1",
     "time": "2017-02-12",
     "keywords": ["log", "connection"],
