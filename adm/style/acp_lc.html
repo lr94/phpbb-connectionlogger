@@ -1,0 +1,82 @@
+<!-- INCLUDE overall_header.html -->
+
+<a name="maincontent"></a>
+
+<h1>{L_TITLE}</h1>
+
+<p>{L_TITLE_EXPLAIN}</p>
+
+<!-- IF S_ERROR -->
+	<div class="errorbox">
+		<h3>{L_WARNING}</h3>
+		<p>{ERROR_MSG}</p>
+	</div>
+<!-- ENDIF -->
+
+<form id="acp_lc" method="post" action="{U_ACTION}">
+
+<!-- BEGIN options -->
+	<!-- IF options.S_LEGEND -->
+		<!-- IF not options.S_FIRST_ROW -->
+			</fieldset>
+		<!-- ENDIF -->
+		<fieldset>
+			<legend>{options.LEGEND}</legend>
+	<!-- ELSE -->
+
+		<dl>
+			<dt><label for="{options.KEY}">{options.TITLE}:</label><!-- IF options.S_EXPLAIN --><br /><span>{options.TITLE_EXPLAIN}</span><!-- ENDIF --></dt>
+			<dd>{options.CONTENT}</dd>
+		</dl>
+
+	<!-- ENDIF -->
+<!-- END options -->
+	
+<!-- IF S_AUTH -->
+	<!-- BEGIN auth_tpl -->
+		{auth_tpl.TPL}
+	<!-- END auth_tpl -->
+<!-- ENDIF -->
+
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	</p>
+	{S_FORM_TOKEN}
+</fieldset>
+</form>
+
+<form id="acp_lc" method="post" action="{U_ACTION}">
+	<fieldset>
+				<legend>{L_LC_MANAGE_IP}</legend>
+		
+		<fieldset>
+				<legend>{L_LC_EXCLUSION_IP}</legend>
+			<dl>
+				<dt><label for="exclusion">{L_IP}:</label><br /><span>{L_LC_EXCLUSION_IP_EXPLAIN}</span></dt>
+				<dd><textarea name="exclusion" cols="40" rows="4" id="ban"></textarea></dd>
+			</dl>
+		<p class="submit-buttons">
+		<input class="button1" type="submit" id="exclusubmit" name="exclusubmit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="exclureset" name="exclureset" value="{L_RESET}" />
+		</p>
+		</fieldset>
+		<fieldset>
+				<legend>{L_LC_UNEXCLUSION_IP}</legend>
+	<!-- IF S_EXCLUSION_OPTIONS -->
+			<dl>
+				<dt><label for="unexclusion">{L_IP}:</label><br /><span>{L_LC_UNEXCLUSION_IP_EXPLAIN}</span></dt>
+				<dd><select id="unexclusion" name="unexclusion[]" multiple="multiple" size="5" style="width: 50%">{EXCLUSION_OPTIONS}</select></dd>
+			</dl>
+		<p class="submit-buttons">
+		<input class="button1" type="submit" id="unexclusubmit" name="unexclusubmit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="unexclureset" name="unexclureset" value="{L_RESET}" />
+		</p>
+		</fieldset>
+	<!-- ELSE -->
+		<p>{L_LC_NO_EXCLUDE_IP}</p>
+	<!-- ENDIF -->
+	</fieldset>
+</form>
+
+<!-- INCLUDE overall_footer.html -->

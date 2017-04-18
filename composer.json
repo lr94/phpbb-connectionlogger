@@ -1,0 +1,32 @@
+{
+    "name": "lr94/lc",
+    "type": "phpbb-extension",
+    "description": "Connection logger",
+    "homepage": "https://",
+    "version": "1.0.0-RC1",
+    "time": "2017-02-12",
+    "keywords": ["log", "connection"],
+    "license": "-",
+    "authors": [
+        {
+            "name": "lr94",
+            "role": "PhpBB 3.2 port author"
+        },
+        {
+            "name": "Mickaël Salfati",
+            "email": "elglobo@phpbb-services.com",
+            "homepage": "http://www.phpbb-services.com",
+            "role": "Original MOD (PhpBB 3.0.x) author"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "display-name": "Connection logger",
+        "soft-require": {
+            "phpbb/phpbb": "~3.2"
+        }
+    }
+}
