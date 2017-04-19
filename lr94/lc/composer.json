@@ -3,8 +3,8 @@
     "type": "phpbb-extension",
     "description": "Connection logger",
     "homepage": "https://github.com/lr94/PhpBB-3.2-Connection-Logger",
-    "version": "1.0.0-RC1",
-    "time": "2017-02-12",
+    "version": "1.0.0-RC2",
+    "time": "2017-04-19",
     "keywords": ["log", "connection"],
     "license": "GPL-2.0",
     "authors": [
