@@ -121,7 +121,7 @@ class main_listener implements EventSubscriberInterface
 				}
 				$db->sql_freeresult($result);
 			
-				//Check interval for log failed
+				// Check interval for log failed
 				if ( strpos($action, 'FAIL') !== FALSE && $lc_interval > 0 )
 				{
 					$sql = 'SELECT log_id
@@ -145,12 +145,12 @@ class main_listener implements EventSubscriberInterface
 						return false;
 					}
 				}				
-				//Check for founder user
+				// Check for founder user
 				if ( $config['lc_founder_disable'] && $user->data['user_type'] == USER_FOUNDER && strpos($action, 'SUCCESS') !== FALSE )
 				{				
 					return false;
 				}
-				//Check for admin user
+				// Check for admin user
 				if ( $config['lc_admin_disable'] && $user->data['user_type'] == USER_NORMAL && strpos($action, 'SUCCESS') !== FALSE )
 				{
 					if ( $user_id == $user->data['user_id'] )
