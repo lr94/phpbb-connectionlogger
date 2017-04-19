@@ -24,7 +24,7 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, array(
-	'ACP_CONNECTIONS_LOGS'			=> 'Connection Log',
+	'ACP_CONNECTIONS_LOGS'			=> 'Connection log',
 	'ACP_CONNECTIONS_LOGS_EXPLAIN'	=> 'This lists all the connections done on board. You can sort/filter by username, date, IP or action. If you have appropriate permissions you can also clear individual operations or the log as a whole.',
 	'ACP_LOGS_GOODIES'				=> '<strong>Trick</strong>: You can look up all IPs by clicking on the name of the column and display <em>Whois</em> by clicking above IP.',
 	'ACP_LOGS_HOSTNAME'				=> 'Hostnames',
@@ -53,7 +53,7 @@ $lang = array_merge($lang, array(
 	
 	// Settings panel
 	'ACP_CONNECTIONS'				=> 'Connection log',
-	'ACP_CONNECTIONS_SETTINGS'		=> 'Connection Log Settings',
+	'ACP_CONNECTIONS_SETTINGS'		=> 'Connection log Settings',
 	'ACP_CONNECTIONS_SETTINGS_EXPLAIN'		=> 'From this panel you can configure all settings for connection log.<br />You can also <em>exclude (or un-exclude)</em> IP addresses in connection log.',
 	'LC_SETTINGS'					=> 'Configuration',
 	'LC_PRUNING'					=> 'Auto-pruning',
