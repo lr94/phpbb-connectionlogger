@@ -6,7 +6,7 @@
     "version": "1.0.0-RC1",
     "time": "2017-02-12",
     "keywords": ["log", "connection"],
-    "license": "GNU GPL v2",
+    "license": "GPL-2.0",
     "authors": [
         {
             "name": "lr94",
