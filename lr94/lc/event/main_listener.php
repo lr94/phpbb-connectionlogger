@@ -1,5 +1,14 @@
 <?php
 
+/**
+*
+* Stop forum Spam extension for the phpBB Forum Software package.
+*
+* @copyright (c) 2017 Luca Robbiano (lr94)
+* @license GNU General Public License, version 2 (GPL-2.0)
+*
+*/
+
 namespace lr94\lc\event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

@@ -1,4 +1,14 @@
 <?php
+
+/**
+*
+* Stop forum Spam extension for the phpBB Forum Software package.
+*
+* @copyright (c) 2017 Luca Robbiano (lr94)
+* @license GNU General Public License, version 2 (GPL-2.0)
+*
+*/
+
 namespace lr94\lc\migrations;
 
 use phpbb\db\migration\migration;
@@ -12,7 +22,6 @@ class lc_1_0_0 extends migration
 
 	public function update_data()
 	{
-		   // return array();
 		return array(
 			array('config.add', array('lc_version', '1.0.0')),
 			array('config.add', array('lc_ext_enable', false)),

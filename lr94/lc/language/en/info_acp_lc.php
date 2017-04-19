@@ -1,14 +1,12 @@
 <?php
+
 /**
 *
-* acp_lc [English]
+* Stop forum Spam extension for the phpBB Forum Software package.
 *
-* @author Mickaël Salfati (Elglobo) http://www.phpbb-services.com
-*
-* @package acp
-* @version $Id: info_acp_lc.php 2010-01-25 (local) $
-* @copyright (c) 2007 phpBB-Services
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License 
+* @copyright (c) 2017 Luca Robbiano (lr94)
+* @copyright (c) ???? Mickaël Salfati (Elglobo)
+* @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
 
