@@ -62,9 +62,14 @@ class main_listener implements EventSubscriberInterface
 	{
 		// Check if the event has already been logged
 		global $lr94_lc_already_logged; // TODO...is this actually necessary?
+
 		if (!isset($lr94_lc_already_logged) && $event['session_data']['session_autologin'])
 		{
-			$this->add('connections', $event['session_data']['session_user_id'], 'LOG_AUTH_SUCCESS_AUTO', $event['session_data']['session_page']);
+			if(!($this->config['lc_founder_disable'] && $this->user->data['user_type'] == USER_FOUNDER) // Logs disabled for successful founder connection?
+			&& !($this->config['lc_admin_disable'] && $this->is_admin($event['session_data']['session_user_id']))) // Logs disabled for successful admin connection?)
+			{
+				$this->add('connections', $event['session_data']['session_user_id'], 'LOG_AUTH_SUCCESS_AUTO', $event['session_data']['session_page']);
+			}
 		}
 	}
 	
@@ -275,8 +280,8 @@ class main_listener implements EventSubscriberInterface
 			if ( $this->config['lc_prune_day'] > 0 )
 			{
 				$sql = 'DELETE FROM ' . LOG_TABLE . '
-					WHERE log_type = ' . LOG_CONNECTIONS . '
-					AND log_time < ' . (time() - $this->config['lc_prune_day']*86400);
+							WHERE log_type = ' . LOG_CONNECTIONS . '
+							AND log_time < ' . (time() - $this->config['lc_prune_day']*86400);
 				$this->db->sql_query($sql);
 			}
 			
