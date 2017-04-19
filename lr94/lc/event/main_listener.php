@@ -121,7 +121,7 @@ class main_listener implements EventSubscriberInterface
 				}
 				$db->sql_freeresult($result);
 			
-				//Check intervall for log failed
+				//Check interval for log failed
 				if ( strpos($action, 'FAIL') !== FALSE && $lc_interval > 0 )
 				{
 					$sql = 'SELECT log_id
@@ -140,7 +140,7 @@ class main_listener implements EventSubscriberInterface
 						$sql = 'UPDATE ' . LOG_TABLE . "
 							SET log_number	= log_number + 1,
 							log_time = $current_time
-							WHERE log_id = " . $row['log_id'];
+							WHERE log_id = " . (int)$row['log_id'];
 						$db->sql_query($sql);
 						return false;
 					}
