@@ -293,7 +293,7 @@ class acp_lc_module
 
 				if ($submit)
 				{
-					set_config($config_name, $config_value);
+					$config->set($config_name, $config_value);
 				}
 			}
 			
