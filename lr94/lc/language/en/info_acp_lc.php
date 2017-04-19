@@ -53,7 +53,7 @@ $lang = array_merge($lang, array(
 	
 	// Settings panel
 	'ACP_CONNECTIONS'				=> 'Connection log',
-	'ACP_CONNECTIONS_SETTINGS'		=> 'Connection log Settings',
+	'ACP_CONNECTIONS_SETTINGS'		=> 'Connection log settings',
 	'ACP_CONNECTIONS_SETTINGS_EXPLAIN'		=> 'From this panel you can configure all settings for connection log.<br />You can also <em>exclude (or un-exclude)</em> IP addresses in connection log.',
 	'LC_SETTINGS'					=> 'Configuration',
 	'LC_PRUNING'					=> 'Auto-pruning',
