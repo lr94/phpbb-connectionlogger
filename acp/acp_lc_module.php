@@ -5,15 +5,15 @@ use phpbb\pagination;
 
 class acp_lc_module
 {
-    public $u_action;
-    public $tpl_name;
-    public $page_title;
+	public $u_action;
+	public $tpl_name;
+	public $page_title;
 
-    public function main($id, $mode)
-    {
-                global $db, $user, $auth, $template, $request, $cache, $phpbb_container;
-                global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
-                
+	public function main($id, $mode)
+	{
+		global $db, $user, $auth, $template, $request, $cache, $phpbb_container;
+		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
+		
 		// Set up general var		
 		$action		= $request->variable('action', '');
 		
@@ -27,7 +27,7 @@ class acp_lc_module
 			$usearch	= utf8_normalize_nfc($request->variable('usearch', '', true));
 			$isearch	= $request->variable('isearch', '');
 			$asearch	= $request->variable('asearch', 'ACP_LOGS_ALL');
-			$deletemark     = (!empty($request->variable('delmarked', '', false, \phpbb\request\request_interface::POST))) ? true : false;
+			$deletemark	= (!empty($request->variable('delmarked', '', false, \phpbb\request\request_interface::POST))) ? true : false;
 			$deleteall	= (!empty($request->variable('delall', '', false, \phpbb\request\request_interface::POST))) ? true : false;
 			
 			// Sort keys
@@ -176,16 +176,16 @@ class acp_lc_module
 			
 			if (!empty($usearch))
 			{
-                                $template->assign_var('USEARCH', $usearch);
+				$template->assign_var('USEARCH', $usearch);
 			}
 			if (!empty($isearch))
 			{
-			        $template->assign_var('ISEARCH', $isearch);
+				$template->assign_var('ISEARCH', $isearch);
 			}
 			
 			if (empty($usearch) && empty($isearch) && $asearch == 'ACP_LOGS_ALL')
 			{
-			        $pagination->generate_template_pagination($this->u_action . "&amp;$u_sort_param", 'pagination', 'start', $log_count, $config['topics_per_page'], $start);
+				$pagination->generate_template_pagination($this->u_action . "&amp;$u_sort_param", 'pagination', 'start', $log_count, $config['topics_per_page'], $start);
 			}
 
 			foreach ($log_data as $row)
@@ -210,8 +210,8 @@ class acp_lc_module
 				);
 			}
 			
-                        //$this->tpl_name = 'acp_lc';
-                        $this->page_title = $user->lang('ACP_CONNECTIONS_LOGS');
+			//$this->tpl_name = 'acp_lc';
+			$this->page_title = $user->lang('ACP_CONNECTIONS_LOGS');
 		}
 		else if ($mode == 'log_connections')
 		{
@@ -224,44 +224,44 @@ class acp_lc_module
 			$display_vars = array(
 				'title'	=> 'ACP_CONNECTIONS_SETTINGS',
 				'vars'	=> array(
-					                'legend1'               => 'LC_SETTINGS',
-				                	'lc_disable'	        => array(
-				                	                        'lang'          => 'LC_DISABLE',
-				                	                        'validate'      => 'bool',
-				                	                        'type'          => 'radio:yes_no',
-				                	                        'explain'	=> true
-				                	                                ),
-                                                        'lc_acp_disable'	=> array(
-                                                                                'lang'          => 'LC_ACP_DISABLE',
-                                                                                'validate'      => 'bool',
-                                                                                'type'          => 'radio:yes_no',
-                                                                                'explain'	=> true
-                                                                                        ),
-					                'lc_founder_disable'	=> array(
-					                                         'lang'         => 'LC_FOUNDER_DISABLE',
-					                                         'validate'     => 'bool',
-					                                         'type'         => 'radio:yes_no',
-					                                         'explain'	=> true
-					                                                ),
-					                'lc_admin_disable'      => array(
-                                                                                 'lang'         => 'LC_ADMIN_DISABLE',
-                                                                                 'validate'     => 'bool',
-                                                                                 'type'         => 'radio:yes_no',
-                                                                                 'explain'	=> true
-                                                                                        ),
-                                                        'lc_interval'           => array(
-                                                                                 'lang'         => 'LC_INTERVAL',
-                                                                                 'validate'     => 'int',
-                                                                                 'type'         => 'text:3:4',	
-                                                                                 'explain'	=> true
-                                                                                        ),
-                                                        'lc_prune_day'          => array(
-                                                                                 'lang'         => 'LC_PRUNE_DAY',
-                                                                                 'validate'     => 'int',
-                                                                                 'type'         => 'text:3:4',
-                                                                                 'explain'	=> true)
-				                )
-			                     );
+							'legend1'					=> 'LC_SETTINGS',
+							'lc_disable'				=> array(
+											'lang'			=> 'LC_DISABLE',
+											'validate'		=> 'bool',
+											'type'			=> 'radio:yes_no',
+											'explain'		=> true
+							),
+							'lc_acp_disable'			=> array(
+											'lang'	 		=> 'LC_ACP_DISABLE',
+											'validate'		=> 'bool',
+											'type'			=> 'radio:yes_no',
+											'explain'		=> true
+							),
+							'lc_founder_disable'		=> array(
+											'lang'			=> 'LC_FOUNDER_DISABLE',
+											'validate'		=> 'bool',
+											'type'			=> 'radio:yes_no',
+											'explain'		=> true
+							),
+							'lc_admin_disable'			=> array(
+											'lang'			=> 'LC_ADMIN_DISABLE',
+											'validate'		=> 'bool',
+											'type'			=> 'radio:yes_no',
+											'explain'		=> true
+											),
+							'lc_interval'				=> array(
+											'lang'			=> 'LC_INTERVAL',
+											'validate'		=> 'int',
+											'type'			=> 'text:3:4',	
+											'explain'		=> true
+											),
+							'lc_prune_day'				=> array(
+											'lang'			=> 'LC_PRUNE_DAY',
+											'validate'		=> 'int',
+											'type'			=> 'text:3:4',
+											'explain'		=> true)
+				)
+			);
 
 			//
 			/*
@@ -316,7 +316,7 @@ class acp_lc_module
 			
 			$template->assign_vars(array(
 				'L_TITLE'			=> $user->lang[$display_vars['title']],
-				'L_TITLE_EXPLAIN'	        => $user->lang[$display_vars['title'] . '_EXPLAIN'],
+				'L_TITLE_EXPLAIN'		=> $user->lang[$display_vars['title'] . '_EXPLAIN'],
 
 				'S_ERROR'			=> (sizeof($error)) ? true : false,
 				'ERROR_MSG'			=> implode('<br />', $error),
@@ -326,7 +326,7 @@ class acp_lc_module
 			
 			$exclusubmit		= ($request->is_set_post('exclusubmit')) ? true : false;
 			$unexclusubmit		= ($request->is_set_post('unexclusubmit')) ? true : false;
-			$exclusion              = $request->variable('exclusion', '');		
+			$exclusion			= $request->variable('exclusion', '');		
 			$exclusion_options	= $request->variable('exclusion_options', '');
 			
 			$sql = 'SELECT exclude_id, exclude_ip FROM ' . LOG_LC_EXCLUDE_IP_TABLE . ''; //TODO
@@ -445,5 +445,5 @@ class acp_lc_module
 		{
 			trigger_error('NO_MODE', E_USER_ERROR);
 		}
-    }
+	}
 }

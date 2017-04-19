@@ -1,13 +1,13 @@
 services:
-        lr94.lc.listener:
-                class: lr94\lc\event\main_listener
-                arguments:
-                        - '@config'
-                        - '@dbal.conn'
-                        - '@user'
-                        - '@controller.helper'
-                        - '@template'
-                        - '@request'
-                        - '%core.table_prefix%'
-                tags:
-                        - { name: event.listener }
+    lr94.lc.listener:
+        class: lr94\lc\event\main_listener
+        arguments:
+            - '@config'
+            - '@dbal.conn'
+            - '@user'
+            - '@controller.helper'
+            - '@template'
+            - '@request'
+            - '%core.table_prefix%'
+        tags:
+            - { name: event.listener }

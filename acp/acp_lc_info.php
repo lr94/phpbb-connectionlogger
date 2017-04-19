@@ -25,18 +25,17 @@ class acp_lc_info
 			'title'		=> 'ACP_CONNECTIONS',
 			'version'	=> '1.0.0',
 			'modes'		=> array(
-				'log_connections'       => array(
-				                                'title'         => 'ACP_CONNECTIONS_SETTINGS',
-				                                'auth'          => 'ext_lr94/lc && acl_a_board',
-				                                'cat'           => array('ACP_CONNECTIONS')
-				                                ),
-				'connections'           => array(
-				                                'title'         => 'ACP_CONNECTIONS_LOGS',
-				                                'auth'          => 'ext_lr94/lc && acl_a_viewlogs',
-				                                'cat'           => array('ACP_CONNECTIONS')),
+				'log_connections'	=> array(
+								'title'	=> 'ACP_CONNECTIONS_SETTINGS',
+								'auth'	=> 'ext_lr94/lc && acl_a_board',
+								'cat'	=> array('ACP_CONNECTIONS')
+								),
+				'connections'		=> array(
+								'title'	=> 'ACP_CONNECTIONS_LOGS',
+								'auth'	=> 'ext_lr94/lc && acl_a_viewlogs',
+								'cat'	=> array('ACP_CONNECTIONS')),
 			),
 		);
 	}
 }
-
 ?>
