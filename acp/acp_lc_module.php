@@ -146,7 +146,7 @@ class acp_lc_module
 			
 			$nb_actions = count($list_actions);
 			$s_asearch = '<select name="asearch">';
-			for($i = 0; $i < $nb_actions; $i++)
+			for ($i = 0; $i < $nb_actions; $i++)
 			{
 				$selected = ( $list_actions[$i] == $asearch ) ? ' selected="selected"' : '';
 				$s_asearch .= '<option value="' . $list_actions[$i] . '"' . $selected . '>' . $user->lang[$list_actions[$i]] . '</option>';
