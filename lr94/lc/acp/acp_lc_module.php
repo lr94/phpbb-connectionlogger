@@ -105,7 +105,7 @@ class acp_lc_module
 			$log_count = 0;
 			$topic_per_page = (!empty($usearch) || !empty($isearch) || $asearch !== 'ACP_LOGS_ALL') ? '' : $config['topics_per_page'];
 			view_log($mode, $log_data, $log_count, $topic_per_page, $start, $forum_id, 0, 0, $sql_where, $sql_sort);
-//print_r($mode);exit(0);
+
 			// Whois (special case)
 			if ($action == 'whois')
 			{
@@ -263,13 +263,6 @@ class acp_lc_module
 				)
 			);
 
-			//
-			/*
-			if (isset($display_vars['lang']))
-			{
-				$user->add_lang($display_vars['lang']);
-			}
-			*/
 			
 			$this->new_config = $config;
 			$cfg_array = ($request->is_set('config')) ? utf8_normalize_nfc($request->variable('config', array('' => ''), true)) : $this->new_config;
