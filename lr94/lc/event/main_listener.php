@@ -97,7 +97,7 @@ class main_listener implements EventSubscriberInterface
 		
 		if ($mode == 'connections')
 		{
-			// Prevent log connections if installer has not been run
+			// Prevent connection log if installer has not been run
 			if (!isset($this->config['lc_version']))
 			{
 				return;
