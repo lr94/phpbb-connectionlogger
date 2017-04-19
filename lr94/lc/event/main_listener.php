@@ -201,8 +201,7 @@ class main_listener implements EventSubscriberInterface
 		{
 			if (!$admin && !defined('IN_CHECK_BAN')
 					&& !($this->config['lc_founder_disable'] && $row['user_type'] == USER_FOUNDER) // Logs disabled for successful founder connection?
-						// Here comes the bug, TODO TODO
-					&& !($this->config['lc_admin_disable'] && $row['user_type'] == USER_NORMAL) // Logs disabled for successful admin connection?
+					&& !($this->config['lc_admin_disable'] && $this->is_admin($row['user_id']) // Logs disabled for successful admin connection?
 				)
 			{
 				if ($autologin)
@@ -312,6 +311,32 @@ class main_listener implements EventSubscriberInterface
 		$log_entry_data = $event['log_entry_data'];
 		$log_entry_data['number'] = !empty($event['row']['log_number']) ? $event['row']['log_number'] : '';
 		$event['log_entry_data'] = $log_entry_data;
+	}
+
+	/* When this function is called the session hasn't been created yet, so I guess this is the only
+	   way we have to know if the user is an administrator or not... */
+	private function is_admin($user_id)
+	{
+		$sql = $this->db->sql_build_query('SELECT', array(
+			'SELECT'	=> 'count(*) AS is_admin',
+			'FROM'		=> array(
+				USERS_TABLE			=> 'u',
+				GROUPS_TABLE		=> 'g',
+				USER_GROUP_TABLE	=> 'ug'
+			),
+			'WHERE'		=> "u.user_id = ug.user_id
+							AND
+							g.group_id = ug.group_id
+							AND
+							g.group_name = 'ADMINISTRATORS'
+							AND
+							u.user_id = " . (int)$user_id
+		));
+
+		$result = $this->db->sql_query($sql);
+		$row = $this->db->sql_fetchrow($result);
+
+		return $row['is_admin'] > 0;
 	}
 }
 
