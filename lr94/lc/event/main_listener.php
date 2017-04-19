@@ -60,8 +60,8 @@ class main_listener implements EventSubscriberInterface
 	
 	public function log_autologin($event)
 	{
-		// Controllo che non sia già stato inserito l'evento nel log
-		global $lr94_lc_already_logged; // TODO...è necessario?
+		// Check if the event has already been logged
+		global $lr94_lc_already_logged; // TODO...is this actually necessary?
 		if (!isset($lr94_lc_already_logged) && $event['session_data']['session_autologin'])
 		{
 			$this->add('connections', $event['session_data']['session_user_id'], 'LOG_AUTH_SUCCESS_AUTO', $event['session_data']['session_page']);
@@ -206,7 +206,7 @@ class main_listener implements EventSubscriberInterface
 			{
 				if ($autologin)
 				{
-					// TODO funziona?
+					// TODO does it work?
 					$this->add('connections', $row['user_id'], 'LOG_AUTH_SUCCESS_AUTO', $user->data['session_page']);
 				}
 				else

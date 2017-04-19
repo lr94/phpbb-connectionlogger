@@ -221,7 +221,6 @@ class acp_lc_module
 				);
 			}
 			
-			//$this->tpl_name = 'acp_lc';
 			$this->page_title = $user->lang('ACP_CONNECTIONS_LOGS');
 		}
 		else if ($mode == 'log_connections')
