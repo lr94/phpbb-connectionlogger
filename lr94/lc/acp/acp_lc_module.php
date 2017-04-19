@@ -74,7 +74,7 @@ class acp_lc_module
 							$where_sql";
 						$db->sql_query($sql);
 
-						add_admin_log('LOG_CLEAR_CONNECTIONS');
+						$this->add_admin_log('LOG_CLEAR_CONNECTIONS');
 					}
 				}
 				else
@@ -310,7 +310,7 @@ class acp_lc_module
 			if ($submit)
 			{
 				
-				add_admin_log('LOG_CONFIG_LOG_CONNECTIONS');
+				$this->add_admin_log('LOG_CONFIG_LOG_CONNECTIONS');
 
 				trigger_error($user->lang['CONFIG_UPDATED'] . adm_back_link($this->u_action));
 			}
@@ -363,7 +363,7 @@ class acp_lc_module
 					$db->sql_multi_insert(LOG_LC_EXCLUDE_IP_TABLE, $sql_ary);
 					$cache->destroy('sql', LOG_LC_EXCLUDE_IP_TABLE);
 					
-					add_admin_log('LOG_LC_EXCLUDE_IP', $exclusion_list_log);
+					$this->add_admin_log('LOG_LC_EXCLUDE_IP', $exclusion_list_log);
 					trigger_error($user->lang['LC_EXCLUDE_IP_UPDATE_SUCCESSFUL'] . adm_back_link($this->u_action));
 				}
 			}
@@ -392,7 +392,7 @@ class acp_lc_module
 					$db->sql_query($sql);
 					$cache->destroy('sql', LOG_LC_EXCLUDE_IP_TABLE);
 					
-					add_admin_log('LOG_LC_UNEXCLUDE_IP', $l_unexclude_list);
+					$this->add_admin_log('LOG_LC_UNEXCLUDE_IP', $l_unexclude_list);
 					trigger_error($user->lang['LC_EXCLUDE_IP_UPDATE_SUCCESSFUL'] . adm_back_link($this->u_action));
 				}
 			}
