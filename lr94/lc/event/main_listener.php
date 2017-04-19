@@ -223,7 +223,7 @@ class main_listener implements EventSubscriberInterface
 			{
 				$this->add('connections', $row['user_id'], 'LOG_AUTH_FAIL_BAN');
 			}
-			else if ($admin && !defined('IN_CHECK_BAN') && !$config['lc_acp_disable'])
+			else if ($admin && !defined('IN_CHECK_BAN') && !$this->config['lc_acp_disable'])
 			{
 				$this->add('connections', $row['user_id'], 'LOG_ADMIN_AUTH_SUCCESS');
 			}
