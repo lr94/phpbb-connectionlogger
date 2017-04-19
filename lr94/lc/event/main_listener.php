@@ -201,7 +201,7 @@ class main_listener implements EventSubscriberInterface
 		{
 			if (!$admin && !defined('IN_CHECK_BAN')
 					&& !($this->config['lc_founder_disable'] && $row['user_type'] == USER_FOUNDER) // Logs disabled for successful founder connection?
-					&& !($this->config['lc_admin_disable'] && $this->is_admin($row['user_id']) // Logs disabled for successful admin connection?
+					&& !($this->config['lc_admin_disable'] && $this->is_admin($row['user_id'])) // Logs disabled for successful admin connection?
 				)
 			{
 				if ($autologin)
