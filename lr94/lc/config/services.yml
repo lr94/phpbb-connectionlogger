@@ -5,8 +5,6 @@ services:
             - '@config'
             - '@dbal.conn'
             - '@user'
-            - '@controller.helper'
-            - '@template'
             - '@request'
             - '%core.table_prefix%'
         tags:

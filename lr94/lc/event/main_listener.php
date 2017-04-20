@@ -13,8 +13,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use phpbb\user;
 use \phpbb\config\config;
 use phpbb\db\driver\driver_interface as db_interface;
-use \phpbb\controller\helper;
-use \phpbb\template\template;
 use \phpbb\request\request;
 
 class main_listener implements EventSubscriberInterface
@@ -22,17 +20,14 @@ class main_listener implements EventSubscriberInterface
 	protected $config;
 	protected $db;
 	protected $user;
-	protected $template;
 	protected $request;
 	protected $table_prefix;
 
-	public function __construct(config $config, db_interface $db, user $user, helper $helper, template $template, request $request, $table_prefix)
+	public function __construct(config $config, db_interface $db, user $user, request $request, $table_prefix)
 	{
 		$this->config = $config;
 		$this->db = $db;
 		$this->user = $user;
-		$this->helper = $helper;
-		$this->template = $template;
 		$this->request = $request;
 		
 		$this->table_prefix = $table_prefix;
