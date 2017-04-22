@@ -169,10 +169,6 @@ class main_listener implements EventSubscriberInterface
 					$sql_ary['log_type'] = LOG_CONNECTIONS;
 				}
 			}
-			else
-			{
-				// return false;
-			}
 		}
 		
 		$sql_ary['log_data'] = $data;
@@ -182,6 +178,7 @@ class main_listener implements EventSubscriberInterface
 	public function auth_login($event)
 	{
 		global $lr94_lc_already_logged;
+		
 		if ($this->config['lc_disable'])
 		{
 			return;
@@ -336,5 +333,9 @@ class main_listener implements EventSubscriberInterface
 
 		return $row['is_admin'] > 0;
 	}
+
+	/*
+		Personally, I think that's a hell of a bird.
+	*/
 }
 
