@@ -78,5 +78,3 @@ $lang = array_merge($lang, array(
 	'LC_EXCLUDE_IP_UPDATE_SUCCESSFUL'	=> 'La lista delle esclusioni è stata modificata con successo.',
 	
 ));
-
-?>

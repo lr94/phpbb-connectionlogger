@@ -32,4 +32,3 @@ class acp_lc_info
 		);
 	}
 }
-?>
