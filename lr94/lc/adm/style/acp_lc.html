@@ -25,7 +25,7 @@
 	<!-- ELSE -->
 
 		<dl>
-			<dt><label for="{options.KEY}">{options.TITLE}:</label><!-- IF options.S_EXPLAIN --><br /><span>{options.TITLE_EXPLAIN}</span><!-- ENDIF --></dt>
+			<dt><label for="{options.KEY}">{options.TITLE}{L_COLON}</label><!-- IF options.S_EXPLAIN --><br /><span>{options.TITLE_EXPLAIN}</span><!-- ENDIF --></dt>
 			<dd>{options.CONTENT}</dd>
 		</dl>
 
@@ -53,7 +53,7 @@
 		<fieldset>
 				<legend>{L_LC_EXCLUSION_IP}</legend>
 			<dl>
-				<dt><label for="exclusion">{L_IP}:</label><br /><span>{L_LC_EXCLUSION_IP_EXPLAIN}</span></dt>
+				<dt><label for="exclusion">{L_IP}{L_COLON}</label><br /><span>{L_LC_EXCLUSION_IP_EXPLAIN}</span></dt>
 				<dd><textarea name="exclusion" cols="40" rows="4" id="ban"></textarea></dd>
 			</dl>
 		<p class="submit-buttons">
@@ -65,7 +65,7 @@
 				<legend>{L_LC_UNEXCLUSION_IP}</legend>
 	<!-- IF S_EXCLUSION_OPTIONS -->
 			<dl>
-				<dt><label for="unexclusion">{L_IP}:</label><br /><span>{L_LC_UNEXCLUSION_IP_EXPLAIN}</span></dt>
+				<dt><label for="unexclusion">{L_IP}{L_COLON}</label><br /><span>{L_LC_UNEXCLUSION_IP_EXPLAIN}</span></dt>
 				<dd><select id="unexclusion" name="unexclusion[]" multiple="multiple" size="5" style="width: 50%">{EXCLUSION_OPTIONS}</select></dd>
 			</dl>
 		<p class="submit-buttons">
