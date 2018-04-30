@@ -28,7 +28,7 @@ $lang = array_merge($lang, array(
 	'ACP_LOGS_HOSTNAME'				=> 'Hostnamen',
 	'ACP_LOGS_SORT'					=> 'Sortieren',
 	'ACP_LOGS_ALL'					=> 'Alle',
-	'ACP_LOGS_FAIL'					=> 'Fehler',
+	'ACP_LOGS_FAIL'					=> 'Erfolglose Anmeldung',
 	
 	'LOG_CLEAR_CONNECTIONS'			=> '<strong>Verbindungsprotokoll gelöscht</strong>',
 	'LOG_CONFIG_LOG_CONNECTIONS'	=> '<strong>Geänderte Verbindungsprotokolleinstellungen</strong>',
