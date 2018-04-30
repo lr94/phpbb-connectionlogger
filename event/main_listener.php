@@ -121,7 +121,7 @@ class main_listener implements EventSubscriberInterface
 						FROM ' . LOG_TABLE . '
 						WHERE log_type = ' . LOG_CONNECTIONS . "
 						AND log_operation = '" . $db->sql_escape($action) . "'
-						AND log_data = '" . $data . "'
+						AND log_data = '" . $db->sql_escape($data) . "'
 						AND log_ip = '" . $db->sql_escape($user->ip) . "'
 						AND user_id = $user_id
 						AND log_time > ($current_time - $lc_interval) 
@@ -152,7 +152,7 @@ class main_listener implements EventSubscriberInterface
 					}
 					else
 					{
-						$sql = 'SELECT * FROM ' . USERS_TABLE . " WHERE user_id =" . $user_id;
+						$sql = 'SELECT * FROM ' . USERS_TABLE . " WHERE user_id = " . (int) $user_id;
 						$result = $db->sql_query($sql);
 						$data = $db->sql_fetchrow($result);
 					}
