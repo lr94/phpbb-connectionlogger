@@ -156,7 +156,7 @@ class main_listener implements EventSubscriberInterface
 						$result = $db->sql_query($sql);
 						$data = $db->sql_fetchrow($result);
 					}
-					$auth_temp = new auth();
+					$auth_temp = new \phpbb\auth\auth();
 					$auth_temp->acl($data);
 					$droit_admin = $auth_temp->acl_get('a_');
 					if ($droit_admin)
