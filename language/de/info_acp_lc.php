@@ -47,7 +47,7 @@ $lang = array_merge($lang, array(
 	'LOG_ADMIN_AUTH_SUCCESS'		=> '<strong>Erfolgreiche Anmeldung in den Adminbereich</strong>',
 	'LOG_LC_EXCLUDE_IP'				=> '<strong>Ausgeschlossene IP im Verbindungsprotokoll</strong><br/>» %s',
 	'LOG_LC_UNEXCLUDE_IP'			=> '<strong>Nicht ausgeschlossene IP im Verbindungsprotokoll</strong><br/>» %s',
-	'LOG_LC_INTERVAL'				=> '(%s attempts)',
+	'LOG_LC_INTERVAL'				=> '(%s Versuche)',
 	
 	// Settings panel
 	'ACP_CONNECTIONS'				=> 'Verbindungsprotokoll',
