@@ -179,7 +179,8 @@ class acp_lc_module
 			for ($i = 0; $i < $nb_actions; $i++)
 			{
 				$selected = ( $list_actions[$i] == $asearch ) ? ' selected="selected"' : '';
-				$s_asearch .= '<option value="' . $list_actions[$i] . '"' . $selected . '>' . $user->lang($list_actions[$i]) . '</option>';
+				$option_text = preg_replace('/».*/', '', $user->lang($list_actions[$i], ''));
+				$s_asearch .= '<option value="' . $list_actions[$i] . '"' . $selected . '>' . $option_text . '</option>';
 			}
 			$s_asearch .= '</select>';
 
