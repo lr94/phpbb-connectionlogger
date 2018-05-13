@@ -22,10 +22,10 @@ class acp_lc_module
 	{
 		global $db, $user, $auth, $template, $request, $cache, $phpbb_container;
 		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
-		
-		// Set up general var		
+
+		// Set up general var
 		$action		= $request->variable('action', '');
-		
+
 		if ($mode == 'connections')
 		{
 			// Set up specific vars
@@ -38,12 +38,12 @@ class acp_lc_module
 			$asearch	= $request->variable('asearch', 'ACP_LOGS_ALL');
 			$deletemark	= (!empty($request->variable('delmarked', '', false, \phpbb\request\request_interface::POST))) ? true : false;
 			$deleteall	= (!empty($request->variable('delall', '', false, \phpbb\request\request_interface::POST))) ? true : false;
-			
+
 			// Sort keys
 			$sort_days	= $request->variable('st', 0);
 			$sort_key	= $request->variable('sk', 't');
 			$sort_dir	= $request->variable('sd', 'd');
-		
+
 			$this->tpl_name = 'acp_lc_view';
 			$this->log_type = constant('LOG_CONNECTIONS');
 
@@ -77,7 +77,7 @@ class acp_lc_module
 				}
 				else
 				{
-					confirm_box(false, $user->lang['CONFIRM_OPERATION'], build_hidden_fields(array(
+					confirm_box(false, $user->lang('CONFIRM_OPERATION'), build_hidden_fields(array(
 						'start'		=> $start,
 						'delmarked'	=> $deletemark,
 						'delall'	=> $deleteall,
@@ -91,10 +91,10 @@ class acp_lc_module
 					);
 				}
 			}
-			
+
 			// Sorting
-			$limit_days = array(0 => $user->lang['ALL_ENTRIES'], 1 => $user->lang['1_DAY'], 7 => $user->lang['7_DAYS'], 14 => $user->lang['2_WEEKS'], 30 => $user->lang['1_MONTH'], 90 => $user->lang['3_MONTHS'], 180 => $user->lang['6_MONTHS'], 365 => $user->lang['1_YEAR']);
-			$sort_by_text = array('u' => $user->lang['SORT_USERNAME'], 't' => $user->lang['SORT_DATE'], 'i' => $user->lang['SORT_IP'], 'o' => $user->lang['SORT_ACTION']);
+			$limit_days = array(0 => $user->lang('ALL_ENTRIES'), 1 => $user->lang('1_DAY'), 7 => $user->lang('7_DAYS'), 14 => $user->lang('2_WEEKS'), 30 => $user->lang('1_MONTH'), 90 => $user->lang('3_MONTHS'), 180 => $user->lang('6_MONTHS'), 365 => $user->lang('1_YEAR'));
+			$sort_by_text = array('u' => $user->lang('SORT_USERNAME'), 't' => $user->lang('SORT_DATE'), 'i' => $user->lang('SORT_IP'), 'o' => $user->lang('SORT_ACTION'));
 			$sort_by_sql = array('u' => 'u.username_clean', 't' => 'l.log_time', 'i' => 'l.log_ip', 'o' => 'l.log_operation');
 
 			$s_limit_days = $s_sort_key = $s_sort_dir = $u_sort_param = '';
@@ -104,8 +104,8 @@ class acp_lc_module
 			$sql_where = ($sort_days) ? (time() - ($sort_days * 86400)) : 0;
 			$sql_sort = $sort_by_sql[$sort_key] . ' ' . (($sort_dir == 'd') ? 'DESC' : 'ASC');
 
-			$l_title = $user->lang['ACP_CONNECTIONS_LOGS'];
-			$l_title_explain = $user->lang['ACP_CONNECTIONS_LOGS_EXPLAIN'];
+			$l_title = $user->lang('ACP_CONNECTIONS_LOGS');
+			$l_title_explain = $user->lang('ACP_CONNECTIONS_LOGS_EXPLAIN');
 
 			$this->page_title = $l_title;
 
@@ -129,13 +129,13 @@ class acp_lc_module
 				$ipwhois = user_ipwhois($user_ip);
 
 				$template->assign_vars(array(
-					'MESSAGE_TITLE'		=> sprintf($user->lang['IP_WHOIS_FOR'], $domain),
+					'MESSAGE_TITLE'		=> sprintf($user->lang('IP_WHOIS_FOR'), $domain),
 					'MESSAGE_TEXT'		=> nl2br($ipwhois))
 				);
 
 				return;
 			}
-			
+
 			// Actions sorting
 			$list_actions = array(
 				'ACP_LOGS_ALL',
@@ -152,7 +152,7 @@ class acp_lc_module
 				'LOG_ADMIN_AUTH_FAIL_NO_ADMIN',
 				'LOG_ADMIN_AUTH_FAIL_DIFFER'
 			);
-			
+
 			$nb_actions = count($list_actions);
 			$s_asearch = '<select name="asearch">';
 			for ($i = 0; $i < $nb_actions; $i++)
@@ -161,16 +161,16 @@ class acp_lc_module
 				$s_asearch .= '<option value="' . $list_actions[$i] . '"' . $selected . '>' . $user->lang[$list_actions[$i]] . '</option>';
 			}
 			$s_asearch .= '</select>';
-			
+
 			$pagination = $phpbb_container->get('pagination');
-			
+
 			$template->assign_vars(array(
 				'L_TITLE'		=> $l_title,
 				'L_EXPLAIN'		=> $l_title_explain,
 				'U_ACTION'		=> $this->u_action,
 
 				'U_IP'			=> $this->u_action . "&amp;usearch=$usearch&amp;isearch=$isearch&amp;asearch=$asearch&amp;start=$start&amp;ip=" . (($ip == 'ip') ? 'hostname' : 'ip'),
-				'L_IP'			=> ($ip == 'hostname') ? $user->lang['ACP_LOGS_HOSTNAME'] : $user->lang['IP'],
+				'L_IP'			=> ($ip == 'hostname') ? $user->lang('ACP_LOGS_HOSTNAME') : $user->lang('IP'),
 				'S_ASEARCH'		=> strip_tags($s_asearch, '<select><option>'),
 				'S_ON_PAGE'		=> $pagination->on_page($log_count, $config['topics_per_page'], $start),
 
@@ -182,7 +182,7 @@ class acp_lc_module
 				'S_CLEARLOGS'	=> $auth->acl_get('a_clearlogs'),
 				)
 			);
-			
+
 			if (!empty($usearch))
 			{
 				$template->assign_var('USEARCH', $usearch);
@@ -191,7 +191,7 @@ class acp_lc_module
 			{
 				$template->assign_var('ISEARCH', $isearch);
 			}
-			
+
 			if (empty($usearch) && empty($isearch) && $asearch == 'ACP_LOGS_ALL')
 			{
 				$pagination->generate_template_pagination($this->u_action . "&amp;$u_sort_param", 'pagination', 'start', $log_count, $config['topics_per_page'], $start);
@@ -200,14 +200,14 @@ class acp_lc_module
 			foreach ($log_data as $row)
 			{
 				$data = array();
-				
+
 				$date = $user->format_date($row['time']);
-				$log_number = ($row['number'] != 1) ? sprintf($user->lang['LOG_LC_INTERVAL'], $row['number'], $config['lc_interval']) : '';
-				$action = (!preg_match("#" . $user->lang['ACP_LOGS_FAIL'] . "#", $row['action']) ? '<div class="log-success">' . $row['action'] . '</div>' : '<div class="log-fail">' . $row['action'] . '&nbsp;' . $log_number . '</div>');
+				$log_number = ($row['number'] != 1) ? sprintf($user->lang('LOG_LC_INTERVAL'), $row['number'], $config['lc_interval']) : '';
+				$action = (!preg_match("#" . $user->lang('ACP_LOGS_FAIL') . "#", $row['action']) ? '<div class="log-success">' . $row['action'] . '</div>' : '<div class="log-fail">' . $row['action'] . '&nbsp;' . $log_number . '</div>');
 
 				$template->assign_block_vars('log', array(
 					'USERNAME'			=> $row['username_full'],
-					
+
 					'IP'				=> ($ip == 'hostname') ? gethostbyaddr($row['ip']) : $row['ip'],
 					'DATE'				=> $date,
 					'ACTION'			=> $action,
@@ -218,17 +218,17 @@ class acp_lc_module
 					)
 				);
 			}
-			
+
 			$this->page_title = $user->lang('ACP_CONNECTIONS_LOGS');
 		}
 		else if ($mode == 'log_connections')
 		{
 			// Set up specific var
 			$submit = ($request->is_set_post('submit')) ? true : false;
-			
+
 			$form_key = 'acp_lc';
 			add_form_key($form_key);
-			
+
 			$display_vars = array(
 				'title'	=> 'ACP_CONNECTIONS_SETTINGS',
 				'vars'	=> array(
@@ -260,7 +260,7 @@ class acp_lc_module
 							'lc_interval'				=> array(
 											'lang'			=> 'LC_INTERVAL',
 											'validate'		=> 'int',
-											'type'			=> 'text:3:4',	
+											'type'			=> 'text:3:4',
 											'explain'		=> true
 											),
 							'lc_prune_day'				=> array(
@@ -271,24 +271,24 @@ class acp_lc_module
 				)
 			);
 
-			
+
 			$this->new_config = $config;
 			$cfg_array = ($request->is_set('config')) ? utf8_normalize_nfc($request->variable('config', array('' => ''), true)) : $this->new_config;
 			$error = array();
-			
+
 			// We validate the complete config if whished
 			validate_config_vars($display_vars['vars'], $cfg_array, $error);
-			
+
 			if ($submit && !check_form_key($form_key))
 			{
-				$error[] = $user->lang['FORM_INVALID'];
+				$error[] = $user->lang('FORM_INVALID');
 			}
 			// Do not write values if there is an error
 			if (sizeof($error))
 			{
 				$submit = false;
 			}
-			
+
 			// We go through the display_vars to make sure no one is trying to set variables he/she is not allowed to...
 			foreach ($display_vars['vars'] as $config_name => $null)
 			{
@@ -304,18 +304,18 @@ class acp_lc_module
 					$config->set($config_name, $config_value);
 				}
 			}
-			
+
 			if ($submit)
 			{
-				
+
 				$this->add_admin_log('LOG_CONFIG_LOG_CONNECTIONS');
 
-				trigger_error($user->lang['CONFIG_UPDATED'] . adm_back_link($this->u_action));
+				trigger_error($user->lang('CONFIG_UPDATED') . adm_back_link($this->u_action));
 			}
-			
+
 			$this->tpl_name = 'acp_lc';
 			$this->page_title = $display_vars['title'];
-			
+
 			$template->assign_vars(array(
 				'L_TITLE'			=> $user->lang[$display_vars['title']],
 				'L_TITLE_EXPLAIN'		=> $user->lang[$display_vars['title'] . '_EXPLAIN'],
@@ -325,81 +325,81 @@ class acp_lc_module
 
 				'U_ACTION'			=> $this->u_action)
 			);
-			
+
 			$exclusubmit		= ($request->is_set_post('exclusubmit')) ? true : false;
 			$unexclusubmit		= ($request->is_set_post('unexclusubmit')) ? true : false;
-			$exclusion			= $request->variable('exclusion', '');		
+			$exclusion			= $request->variable('exclusion', '');
 			$exclusion_options	= $request->variable('exclusion_options', '');
-			
+
 			$sql = 'SELECT exclude_id, exclude_ip FROM ' . LOG_LC_EXCLUDE_IP_TABLE . ''; //TODO
 			$result = $db->sql_query($sql);
-			
+
 			while ($row = $db->sql_fetchrow($result))
 			{
 				$exclusion_options .= '<option value="' . $row['exclude_id'] . '">' . $row['exclude_ip'] . '</option>';
 			}
-			
+
 			if ($exclusubmit)
 			{
 				if (!empty($exclusion))
 				{
 					$exclusion_list = (!is_array($exclusion)) ? array_unique(explode("\n", $exclusion)) : $exclusion;
 					$exclusion_list_log = implode(', ', $exclusion_list);
-					
+
 					$sql_ary = array();
 					foreach ($exclusion_list as $exclusion_item)
-					{				
+					{
 						if (preg_match('#^([0-9]{1,3})\.([0-9\*]{1,3})\.([0-9\*]{1,3})\.([0-9\*]{1,3})$#', trim($exclusion_item)))
 						{
 							$sql_ary[] = array('exclude_ip' => $exclusion_item);
 						}
 						else
 						{
-							trigger_error($user->lang['LC_EXCLUDE_NO_IP'] . adm_back_link($this->u_action));
+							trigger_error($user->lang('LC_EXCLUDE_NO_IP') . adm_back_link($this->u_action));
 						}
 					}
 					$db->sql_multi_insert(LOG_LC_EXCLUDE_IP_TABLE, $sql_ary);
 					$cache->destroy('sql', LOG_LC_EXCLUDE_IP_TABLE);
-					
+
 					$this->add_admin_log('LOG_LC_EXCLUDE_IP', $exclusion_list_log);
-					trigger_error($user->lang['LC_EXCLUDE_IP_UPDATE_SUCCESSFUL'] . adm_back_link($this->u_action));
+					trigger_error($user->lang('LC_EXCLUDE_IP_UPDATE_SUCCESSFUL') . adm_back_link($this->u_action));
 				}
 			}
 			else if ($unexclusubmit)
 			{
 				$exclusion = $request->variable('unexclusion', array(''));
 				$unexclude_sql = array_map('intval', $exclusion);
-				
+
 				if ($exclusion)
 				{
 					$sql = 'SELECT exclude_ip AS unexclude_info
 						FROM ' . LOG_LC_EXCLUDE_IP_TABLE . '
 						WHERE ' . $db->sql_in_set('exclude_id', $unexclude_sql);
 					$result = $db->sql_query($sql);
-					
+
 					$l_unexclude_list = '';
-					
+
 					while ($row = $db->sql_fetchrow($result))
 					{
 						$l_unexclude_list .= (($l_unexclude_list != '') ? ', ' : '') . $row['unexclude_info'];
 					}
 					$db->sql_freeresult($result);
-					
+
 					$sql = 'DELETE FROM ' . LOG_LC_EXCLUDE_IP_TABLE . '
 						WHERE ' . $db->sql_in_set('exclude_id', $unexclude_sql);
 					$db->sql_query($sql);
 					$cache->destroy('sql', LOG_LC_EXCLUDE_IP_TABLE);
-					
+
 					$this->add_admin_log('LOG_LC_UNEXCLUDE_IP', $l_unexclude_list);
 					trigger_error($user->lang['LC_EXCLUDE_IP_UPDATE_SUCCESSFUL'] . adm_back_link($this->u_action));
 				}
 			}
-			
+
 			$template->assign_vars(array(
 				'S_EXCLUSION_OPTIONS'	=> ($exclusion_options) ? true : false,
 				'EXCLUSION_OPTIONS'		=> $exclusion_options)
 			);
-			
+
 			// Output relevant page
 			foreach ($display_vars['vars'] as $config_key => $vars)
 			{
@@ -407,7 +407,7 @@ class acp_lc_module
 				{
 					continue;
 				}
-				
+
 				if (strpos($config_key, 'legend') !== false)
 				{
 					$template->assign_block_vars('options', array(
@@ -417,9 +417,9 @@ class acp_lc_module
 
 					continue;
 				}
-				
+
 				$type = explode(':', $vars['type']);
-				
+
 				$l_explain = '';
 				if ($vars['explain'] && isset($vars['lang_explain']))
 				{
@@ -438,17 +438,17 @@ class acp_lc_module
 					'CONTENT'		=> build_cfg_template($type, $config_key, $this->new_config, $config_key, $vars),
 					)
 				);
-			
+
 				unset($display_vars['vars'][$config_key]);
 			}
-			
+
 		}
 		else
 		{
 			trigger_error('NO_MODE', E_USER_ERROR);
 		}
 	}
-	
+
 	private function add_admin_log($log_operation)
 	{
 		global $phpbb_log, $user;
