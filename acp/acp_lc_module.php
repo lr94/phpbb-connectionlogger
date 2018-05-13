@@ -179,7 +179,7 @@ class acp_lc_module
 			for ($i = 0; $i < $nb_actions; $i++)
 			{
 				$selected = ( $list_actions[$i] == $asearch ) ? ' selected="selected"' : '';
-				$s_asearch .= '<option value="' . $list_actions[$i] . '"' . $selected . '>' . $user->lang[$list_actions[$i]] . '</option>';
+				$s_asearch .= '<option value="' . $list_actions[$i] . '"' . $selected . '>' . $user->lang($list_actions[$i]) . '</option>';
 			}
 			$s_asearch .= '</select>';
 
@@ -338,8 +338,8 @@ class acp_lc_module
 			$this->page_title = $display_vars['title'];
 
 			$template->assign_vars(array(
-				'L_TITLE'			=> $user->lang[$display_vars['title']],
-				'L_TITLE_EXPLAIN'		=> $user->lang[$display_vars['title'] . '_EXPLAIN'],
+				'L_TITLE'			=> $user->lang($display_vars['title']),
+				'L_TITLE_EXPLAIN'		=> $user->lang($display_vars['title'] . '_EXPLAIN'),
 
 				'S_ERROR'			=> (sizeof($error)) ? true : false,
 				'ERROR_MSG'			=> implode('<br />', $error),
@@ -412,7 +412,7 @@ class acp_lc_module
 					$cache->destroy('sql', LOG_LC_EXCLUDE_IP_TABLE);
 
 					$this->add_admin_log('LOG_LC_UNEXCLUDE_IP', $l_unexclude_list);
-					trigger_error($user->lang['LC_EXCLUDE_IP_UPDATE_SUCCESSFUL'] . adm_back_link($this->u_action));
+					trigger_error($user->lang('LC_EXCLUDE_IP_UPDATE_SUCCESSFUL') . adm_back_link($this->u_action));
 				}
 			}
 
@@ -433,7 +433,7 @@ class acp_lc_module
 				{
 					$template->assign_block_vars('options', array(
 						'S_LEGEND'		=> true,
-						'LEGEND'		=> (isset($user->lang[$vars])) ? $user->lang[$vars] : $vars)
+						'LEGEND'		=> (isset($user->lang[$vars])) ? $user->lang($vars) : $vars)
 					);
 
 					continue;
@@ -444,16 +444,16 @@ class acp_lc_module
 				$l_explain = '';
 				if ($vars['explain'] && isset($vars['lang_explain']))
 				{
-					$l_explain = (isset($user->lang[$vars['lang_explain']])) ? $user->lang[$vars['lang_explain']] : $vars['lang_explain'];
+					$l_explain = (isset($user->lang[$vars['lang_explain']])) ? $user->lang($vars['lang_explain']) : $vars['lang_explain'];
 				}
 				else if ($vars['explain'])
 				{
-					$l_explain = (isset($user->lang[$vars['lang'] . '_EXPLAIN'])) ? $user->lang[$vars['lang'] . '_EXPLAIN'] : '';
+					$l_explain = (isset($user->lang[$vars['lang'] . '_EXPLAIN'])) ? $user->lang($vars['lang'] . '_EXPLAIN') : '';
 				}
 
 				$template->assign_block_vars('options', array(
 					'KEY'			=> $config_key,
-					'TITLE'			=> (isset($user->lang[$vars['lang']])) ? $user->lang[$vars['lang']] : $vars['lang'],
+					'TITLE'			=> (isset($user->lang[$vars['lang']])) ? $user->lang($vars['lang']) : $vars['lang'],
 					'S_EXPLAIN'		=> $vars['explain'],
 					'TITLE_EXPLAIN'	=> $l_explain,
 					'CONTENT'		=> build_cfg_template($type, $config_key, $this->new_config, $config_key, $vars),
